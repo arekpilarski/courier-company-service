@@ -1,0 +1,121 @@
+package pl.kurs.Services;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.StringWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+
+import pl.kurs.Entities.Address;
+import pl.kurs.Entities.ObjectsPacket;
+import pl.kurs.Entities.Package;
+import pl.kurs.Entities.Recipient;
+import pl.kurs.Entities.Sender;
+import pl.kurs.Entities.Package.Size;
+
+public class TestMain {
+
+	public static void main(String[] args) {
+		//Create a package object
+		String newDesc = "New description";
+		float newWeight = 30.05f;
+		Size newSize = Size.large;
+		
+		Package newPackage = new Package(newWeight,newDesc,newSize);
+		
+		//Create both address objects
+		String newSenderCountry, newSenderRegion, newSenderCity, newSenderStreetAndNumber,
+				newRecipientCountry, newRecipientRegion, newRecipientCity, newRecipientStreetAndNumber;
+		newSenderCountry = "Polska";
+		newSenderRegion = "Slask";
+		newSenderCity = "Gliwice";
+		newSenderStreetAndNumber = "Kozielska 7";
+		
+		newRecipientCountry = "Polska";
+		newRecipientRegion = "Mazowieckie";
+		newRecipientCity = "Warszawa";
+		newRecipientStreetAndNumber = "Kolbego 4";
+		
+		Address newSenderAddress = new Address(newSenderCountry, newSenderRegion, newSenderCity, newSenderStreetAndNumber);
+		Address newRecipientAddress = new Address(newRecipientCountry, newRecipientRegion, newRecipientCity, newRecipientStreetAndNumber);
+		
+		//Create sender object
+		String newSenderName, newSenderSurname, newSenderPhone, newSenderEmail;
+		newSenderName = "Ala";
+		newSenderSurname = "Makota";
+		newSenderPhone = "555-654-322";
+		newSenderEmail = "ala.makota@email.com";
+		
+		Sender newSender = new Sender(newSenderName, newSenderSurname, newSenderPhone, newSenderEmail);
+		
+		//Create recipient object
+		String newRecipientName, newRecipientSurname, newRecipientPhone, newRecipientEmail;
+		newRecipientName = "Marek";
+		newRecipientSurname = "Kotysz";
+		newRecipientPhone = "600-500-444";
+		newRecipientEmail = "marek.kotysz@email.com";
+		
+		Recipient newRecipient = new Recipient(newRecipientName, newRecipientSurname, newRecipientPhone, newRecipientEmail);
+		
+		
+		// Insert objects
+		List <Object> dataToInsert = new ArrayList<Object>();
+		dataToInsert.add(newPackage);
+		dataToInsert.add(newSender);
+		dataToInsert.add(newSenderAddress);
+		dataToInsert.add(newRecipient);
+		dataToInsert.add(newRecipientAddress);
+		
+		ObjectsPacket objectsPacket = new ObjectsPacket();
+		objectsPacket.setObjectsPacket(dataToInsert);
+
+		
+		
+		String xml="Nothing happened";
+		// 
+		try {
+			//System.out.println(objectsPacket);
+			JAXBContext jContext = JAXBContext.newInstance(ObjectsPacket.class);
+			Marshaller marshaller = jContext.createMarshaller();
+			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			
+			StringWriter sw = new StringWriter();
+			marshaller.marshal(objectsPacket, sw);
+			xml = sw.toString();
+			
+			//System.out.println(xml);
+			
+			URL url = new URL("http://localhost:8080/take/test/processObjects");
+			HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+			httpCon.setDoOutput(true);
+			httpCon.setDoInput(true);
+			httpCon.setRequestMethod("POST");
+			httpCon.setRequestProperty("Content-type", "text/xml");
+			OutputStreamWriter out = new OutputStreamWriter(
+			    httpCon.getOutputStream());
+			//out.write(xml);
+			out.close();
+			
+			BufferedReader in = new BufferedReader(new InputStreamReader(httpCon.getInputStream()));
+			
+			String responseXml="", buffer="";
+			
+			while((buffer = in.readLine()) != null) 
+				responseXml += buffer;
+			in.close();
+			
+			System.out.println(responseXml);
+			
+		} catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		
+	}
+
+}

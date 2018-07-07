@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;ObjectsPacket.java&apos; to &apos;takeNEW/src/pl.kurs.Entities&apos;&#x0D;&#x0A;- Original project: &apos;takeclient&apos;&#x0D;&#x0A;- Destination element: &apos;takeNEW/src/pl.kurs.Entities&apos;&#x0D;&#x0A;- Original element: &apos;pl.kurs.Entities.ObjectsPacket.java&apos;" description="Copy compilation unit" destination="=takeNEW/src&lt;pl.kurs.Entities" element1="/src&lt;pl.kurs.Entities{ObjectsPacket.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1528444725682" units="1" version="1.0"/>
+</session>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;pl.kurs.Services.Sender&apos; to &apos;Main&apos;&#x0D;&#x0A;- Original project: &apos;takeclient&apos;&#x0D;&#x0A;- Original element: &apos;pl.kurs.Services.Sender&apos;&#x0D;&#x0A;- Renamed element: &apos;pl.kurs.Services.Main&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Sender&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;pl.kurs.Services{Sender.java[Sender" matchStrategy="1" name="Main" qualified="false" references="true" similarDeclarations="false" stamp="1528045363190" textual="false" version="1.0"/>
+</session>

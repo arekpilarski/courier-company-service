@@ -1,0 +1,31 @@
+1525185769358	Copy compilation unit
+1525222119388	Delete element
+1525222310963	Copy file
+1525272629245	Copy compilation unit
+1525272636076	Copy compilation unit
+1525272807379	Rename type 'Sender'
+1525272938326	Rename type 'Address'
+1525272970681	Copy file
+1525273680595	Delete element
+1525274315639	Rename package 'testing'
+1525274698735	Rename type 'Samples'
+1525441944574	Delete element
+1525441950683	Delete element
+1525441956261	Delete element
+1525442049026	Rename type 'TestAddress'
+1525442063010	Rename type 'TestAddressREST'
+1525442075877	Rename type 'TestCourier'
+1525442089737	Rename type 'TestCourierREST'
+1525442101936	Rename type 'TestPackage'
+1525442113529	Rename type 'TestRoute'
+1525442130463	Rename type 'TestPackageREST'
+1525442138758	Rename type 'TestRecipient'
+1525442147298	Rename type 'TestRecipientREST'
+1525442155642	Rename type 'TestRouteREST'
+1525442169621	Rename type 'TestSender'
+1525442178764	Rename type 'TestSenderREST'
+1525442259904	Rename package 'Services'
+1525442278110	Move compilation unit
+1525442308623	Rename package 'pl.kurs.testing'
+1525442348702	Move compilation units
+1525442380111	Move compilation unit
